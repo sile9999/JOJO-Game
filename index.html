@@ -540,7 +540,7 @@
                 <div class="input-group">
                     <div class="input-row">
                         <label for="eventName">活動名稱：</label>
-                        <input type="text" id="eventName" placeholder="例如：喬克絲之門">
+                        <input type="text" id="eventName" placeholder="例如：蕎克絲之門">
                     </div>
                     <div class="input-row">
                         <label for="endTime"> 結束時間：</label>
@@ -625,7 +625,7 @@
         <div id="playerLoginCard" class="login-card">
             <h2 id="loginCardTitle">🎮 加入連線戳戳樂</h2>
             <input type="password" id="inputRoomPass" placeholder="請輸入房間密碼">
-            <input type="text" id="inputPlayerName" placeholder="請輸入您的暱稱">
+            <input type="text" id="inputPlayerName" placeholder="請輸入您的遊戲暱稱">
             <button class="btn-apply" onclick="loginPlayer()">進入遊戲</button>
         </div>
 
@@ -657,36 +657,29 @@
 
     <script>
         // ==================== 0. 防 F12 與盜取保護機制 ====================
-        // 禁用右鍵選單
         document.addEventListener('contextmenu', function (e) {
             e.preventDefault();
         });
 
-        // 禁用常見開發者工具快捷鍵
         document.addEventListener('keydown', function (e) {
-            // 禁用 F12
             if (e.key === 'F12' || e.keyCode === 123) {
                 e.preventDefault();
                 return false;
             }
-            // 禁用 Ctrl+Shift+I / J / C (Mac: Cmd+Alt+I / J / C)
             if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
                 e.preventDefault();
                 return false;
             }
-            // 禁用 Ctrl+U (檢視原始碼)
             if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.key === 'u')) {
                 e.preventDefault();
                 return false;
             }
-            // 禁用 Ctrl+S (存檔)
             if ((e.ctrlKey || e.metaKey) && (e.key === 'S' || e.key === 's')) {
                 e.preventDefault();
                 return false;
             }
         });
 
-        // Debugger 干擾（強行開啟 DevTools 時會觸發無限斷點卡死）
         setInterval(function () {
             const startTime = performance.now();
             (function () {
@@ -694,11 +687,10 @@
             })["constructor"]("debugger")();
             const endTime = performance.now();
             if (endTime - startTime > 100) {
-                // 可在此處執行卡死或自動跳轉
             }
         }, 500);
 
-        // ==================== 1. Firebase 設定 (已更新為指定專案) ====================
+        // ==================== 1. Firebase 設定 (已置換為新庫) ====================
         const firebaseConfig = {
             apiKey: "AIzaSyB5PFhq15cGpTTaDJmq2QhzTAxAALjj56s",
             authDomain: "jojogame.firebaseapp.com",
